@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Eventos Sala Astoria</title>
+
+<style>
+body{
+  font-family:'Poppins',sans-serif;
+}
+
+.rare-section-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:auto 0px;
+  max-width:1200px;
+}
+
+.rare-events-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:45px;
+  width:100%;
+}
+
+.rare-event-block{
+  display:flex;
+  flex-direction:column;
+}
+.rare-event-block p {
+    margin-bottom: 0px;
+    line-height:1.5;
+}
+
+.rare-title{
+  font-weight:bold;
+  font-size:1.2em;
+}
+
+.rare-location{
+  font-size:1em;
+}
+
+.rare-date-box{
+  display:flex;
+  align-items:center;
+  margin:3px 0;
+}
+
+.rare-date-number{
+  font-size:2.8em;
+  font-weight:bold;
+}
+
+.rare-date-text{
+  margin-left:12px;
+  display:flex;
+  flex-direction:column;
+}
+
+.rare-event-img{
+  width:100%;
+  margin-top:5px;
+}
+
+.rare-event-block .rare-buy-btn{
+  display:block;
+  background:#307fe2;
+  color:#fff;
+  border:none;
+  padding:8px;
+  cursor:pointer;
+  font-weight:bold;
+  text-align:center;
+  text-decoration:none;
+  width:100%;
+}
+
+.rare-buy-btn:hover{
+  background:#1d5fb5;
+}
+
+.rare-section-center .rare-more-btn{
+  margin-top:20px;
+  background:transparent;
+  color:#307fe2;
+  border:2px solid #307fe2;
+  padding:8px;
+  cursor:pointer;
+  font-weight:bold;
+  width:350px;
+}
+
+.rare-more-btn:hover{
+  background:#307fe2;
+  color:white;
+}
+
+.rare-hidden{
+  display:none;
+}
+@media (max-width: 768px) {
+  .rare-events-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="rare-section-center">
+
+<div id="events-container" class="rare-events-row"></div>
+
+<button id="rare-more-btn" class="rare-more-btn">Ver más</button>
+
+</section>
+
+<script>
+
+/* LISTA DE EVENTOS */
+/* SOLO AGREGAS AQUÍ NUEVOS EVENTOS */
+
+const events = [
+
+{
+title:"En el Nombre del Miedo",
+location:"Bogotá | Sala Astoria",
+day:"12, 19, 26",
+month:"Marzo",
+weekday:"Jueves",
+img:"https://cdn.getcrowder.com/images/9e5bbd01-d561-4479-9da1-da588aa4de2c-banner-2.jpg",
+link:"https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo"
+},
+
+{
+title:"Estado de GraveEdad",
+location:"Bogotá | Sala Astoria",
+day:"21",
+month:"Marzo",
+weekday:"Viernes",
+img:"https://cdn.getcrowder.com/images/81d075cb-bd43-475b-891b-3a5ab1d20249-banner-5.png",
+link:"https://www.entradasdeteatro.co/event/estado-de-grave-edad"
+},
+
+{
+title:"Entre tú & YO-YO",
+location:"Bogotá | Sala Astoria",
+day:"25",
+month:"Abril",
+weekday:"Sábado",
+img:"https://cdn.getcrowder.com/images/474beb5c-1bc4-4f3c-bda4-6891cfdaeedf-banner.jpg",
+link:"https://www.entradasdeteatro.co/event/entre-tu-y-yo"
+},
+{
+title:"Sexpedientes en Vivo",
+location:"Bogotá | Sala Astoria",
+day:"2, 9, 16, 23",
+month:"Mayo",
+weekday:"Sábado",
+img:"https://cdn.getcrowder.com/images/c1b02bcb-8218-4265-b4cb-ce1102c508d4-diseo-sin-ttulo.png",
+link:"https://www.entradasdeteatro.co/event/sexpedientes-en-vivo-boleteria-individual"
+}
+]
+
+
+let showingAll = false
+const container = document.getElementById("events-container")
+const moreBtn = document.getElementById("rare-more-btn")
+
+
+function renderEvents(){
+
+container.innerHTML = ""
+
+let visibleEvents = showingAll ? events : events.slice(0,3)
+
+visibleEvents.forEach(event=>{
+
+container.innerHTML += `
+
+<div class="rare-event-block">
+
+<p class="rare-title">${event.title}</p>
+<p class="rare-location">${event.location}</p>
+
+<div class="rare-date-box">
+<span class="rare-date-number">${event.day}</span>
+
+<div class="rare-date-text">
+<span>${event.month}</span>
+<span>${event.weekday}</span>
+</div>
+</div>
+
+<img src="${event.img}" class="rare-event-img">
+
+<a href="${event.link}" class="rare-buy-btn">Comprar</a>
+
+</div>
+
+`
+
+})
+
+/* mostrar botón solo si hay más de 3 eventos */
+
+if(events.length <=3){
+
+moreBtn.style.display="none"
+
+}else{
+
+moreBtn.style.display="inline-block"
+
+moreBtn.textContent = showingAll ? "Ver Menos" : "Ver Más"
+
+}
+
+}
+
+moreBtn.addEventListener("click",()=>{
+
+showingAll = !showingAll
+renderEvents()
+
+})
+
+renderEvents()
+
+</script>
+
+</body>
+</html>
