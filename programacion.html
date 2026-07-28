@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programación</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+<div style="font-family: 'Courier New', monospace; background: transparent; max-width: 680px; margin: 0 auto; padding: 2rem 1rem;">
+
+  <div style="text-align:center; margin-bottom: 4px;">
+    <span style="color:#d5ed3d; font-weight:700; font-size:26px; letter-spacing:1px;">PROGRAMACIÓN</span>
+  </div>
+  <div style="text-align:center; margin-bottom: 28px;">
+    <span style="color:#f8a7c9; font-size:14px; letter-spacing:1px;">LO QUE VIVIRÁS ESTOS DOS DÍAS</span>
+  </div>
+
+  <div style="display:flex; width:100%; gap:16px; margin-bottom: 32px;">
+    <button type="button" class="day-btn" data-day="viernes" style="flex:1; padding:14px 8px; border-radius:999px; font-family:inherit; font-size:14px; letter-spacing:0.5px; cursor:pointer; background:#f8a7c9; color:#4b1528; border:1.5px solid #f8a7c9; font-weight:700;">VIERNES 11 DE SEPTIEMBRE</button>
+    <button type="button" class="day-btn" data-day="sabado" style="flex:1; padding:14px 8px; border-radius:999px; font-family:inherit; font-size:14px; letter-spacing:0.5px; cursor:pointer; background:transparent; color:#f8a7c9; border:1.5px solid #f8a7c9; font-weight:700;">SÁBADO 12 DE SEPTIEMBRE</button>
+  </div>
+
+  <div id="panel-viernes" class="day-panel" style="display:flex; flex-direction:column; gap:24px;">
+    <div style="display:flex; gap:24px;">
+      <div style="min-width:90px; color:#d5ed3d; font-weight:700; font-size:15px;">6:20 PM</div>
+      <div>
+        <div style="color:#d5ed3d; font-weight:700; font-size:15px;">Bienestar · amor propio + calma</div>
+        <div style="color:#ffffff; font-size:14px;">Lorem ipsum</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:24px;">
+      <div style="min-width:90px; color:#d5ed3d; font-weight:700; font-size:15px;">7:30 PM</div>
+      <div>
+        <div style="color:#d5ed3d; font-weight:700; font-size:15px;">Redes sociales</div>
+        <div style="color:#ffffff; font-size:14px;">lorem ipsum</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:24px;">
+      <div style="min-width:90px; color:#d5ed3d; font-weight:700; font-size:15px;">7:30 PM</div>
+      <div>
+        <div style="color:#d5ed3d; font-weight:700; font-size:15px;">Inteligencia Artifical</div>
+        <div style="color:#ffffff; font-size:14px;">david rodriguez</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-sabado" class="day-panel" style="display:none; flex-direction:column; gap:24px;">
+    <div style="display:flex; gap:24px;">
+      <div style="min-width:90px; color:#d5ed3d; font-weight:700; font-size:15px;">6:20 PM</div>
+      <div>
+        <div style="color:#d5ed3d; font-weight:700; font-size:15px;">Bienestar · amor propio + calma</div>
+        <div style="color:#ffffff; font-size:14px;">Lorem ipsum</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:24px;">
+      <div style="min-width:90px; color:#d5ed3d; font-weight:700; font-size:15px;">7:30 PM</div>
+      <div>
+        <div style="color:#d5ed3d; font-weight:700; font-size:15px;">Redes sociales</div>
+        <div style="color:#ffffff; font-size:14px;">lorem ipsum</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:24px;">
+      <div style="min-width:90px; color:#d5ed3d; font-weight:700; font-size:15px;">7:30 PM</div>
+      <div>
+        <div style="color:#d5ed3d; font-weight:700; font-size:15px;">Inteligencia Artifical</div>
+        <div style="color:#ffffff; font-size:14px;">david rodriguez</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.day-btn');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var day = btn.getAttribute('data-day');
+      buttons.forEach(function (b) {
+        var active = b.getAttribute('data-day') === day;
+        b.style.background = active ? '#f8a7c9' : 'transparent';
+        b.style.color = active ? '#4b1528' : '#f8a7c9';
+      });
+      document.querySelectorAll('.day-panel').forEach(function (p) {
+        p.style.display = p.id === 'panel-' + day ? 'flex' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
