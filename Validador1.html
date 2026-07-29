@@ -1,0 +1,133 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  #validador {
+    font-family: 'Poppins', sans-serif;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 32px);
+    box-sizing: border-box;
+  }
+  #validador .acc-label {
+    display: block;
+    font-size: clamp(12px, 2vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  #acc-input {
+    width: 100%;
+    padding: clamp(12px, 2.5vw, 16px) 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(15px, 3vw, 17px);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #111827;
+    background: #f9fafb;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  #acc-input::placeholder {
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: #9ca3af;
+    text-transform: none;
+  }
+  #acc-input:focus {
+    border-color: #273dec;
+    background: #fff;
+  }
+  #acc-btn {
+    width: 100%;
+    padding: clamp(12px, 2.5vw, 16px);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(14px, 2.8vw, 16px);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #fff;
+    background: #111827;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  #acc-btn:hover {
+    background: #273dec;
+    transform: translateY(-1px);
+  }
+  #acc-btn:active {
+    transform: translateY(0);
+  }
+  #acc-btn:disabled {
+    background: #9ca3af;
+    cursor: default;
+    transform: none;
+  }
+  #acc-msg {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    display: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(12px, 2.5vw, 13px);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+  }
+</style>
+
+<div id="validador">
+  <label class="acc-label">Código de acceso</label>
+  <input id="acc-input" type="text" placeholder="Ej. ABC123"
+    oninput="this.value=this.value.toUpperCase()"
+    onkeydown="if(event.key==='Enter')accValidar()" />
+  <button id="acc-btn" onclick="accValidar()">Validar y acceder →</button>
+  <div id="acc-msg"></div>
+</div>
+
+<script>
+var accCodigos = {
+  "CODIGO1": { usos: 5, usados: 0, url: "https://www.entradasdeteatro.co/preview/event/en-el-nombre-del-miedo-boleteria-individual/3e384739-0cda-45f1-a3e1-4301dcd8142a/IN_SALE" }
+};
+function accValidar() {
+  var val = document.getElementById("acc-input").value.trim().toUpperCase();
+  var msg = document.getElementById("acc-msg");
+  var btn = document.getElementById("acc-btn");
+
+  if (!val) {
+    msg.style.display = "block"; msg.style.background = "#fef2f2"; msg.style.color = "#991b1b";
+    msg.innerHTML = "Por favor ingresa un código.";
+    return;
+  }
+  if (!accCodigos[val]) {
+    msg.style.display = "block"; msg.style.background = "#fef2f2"; msg.style.color = "#991b1b";
+    msg.innerHTML = "Código inválido.";
+    return;
+  }
+  var d = accCodigos[val];
+  if (d.usos - d.usados <= 0) {
+    msg.style.display = "block"; msg.style.background = "#fef2f2"; msg.style.color = "#991b1b";
+    msg.innerHTML = "Este código ya agotó sus usos.";
+    return;
+  }
+
+  accCodigos[val].usados++;
+  btn.disabled = true;
+  msg.style.display = "block"; msg.style.background = "#f0fdf4"; msg.style.color = "#166534";
+  msg.innerHTML = "Código válido. Redirigiendo...";
+
+  setTimeout(function () {
+    window.open(d.url, "_blank");
+    btn.disabled = false;
+  }, 1200);
+}
+</script>
