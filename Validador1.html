@@ -1,6 +1,47 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #pagina {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+  }
+
+  #banner {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: #307fe2;
+    display: flex;
+    justify-content: center;
+    padding: clamp(24px, 6vw, 48px) 0;
+    box-sizing: border-box;
+  }
+  #banner-inner {
+    width: 100%;
+    max-width: 440px;
+    padding: 0 clamp(20px, 4vw, 32px);
+    box-sizing: border-box;
+  }
+  #banner-inner img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   #validador {
     font-family: 'Poppins', sans-serif;
     max-width: 440px;
@@ -85,13 +126,21 @@
   }
 </style>
 
-<div id="validador">
-  <label class="acc-label">Código de acceso</label>
-  <input id="acc-input" type="text" placeholder="Ej. ABC123"
-    oninput="this.value=this.value.toUpperCase()"
-    onkeydown="if(event.key==='Enter')accValidar()" />
-  <button id="acc-btn" onclick="accValidar()">Validar y acceder →</button>
-  <div id="acc-msg"></div>
+<div id="pagina">
+  <div id="banner">
+    <div id="banner-inner">
+      <img src="https://cdn.getcrowder.com/images/4144ecbd-650d-48d9-9672-48e47e3b67ca-diseo-sin-ttulo-45.png?w=300" alt="Logo">
+    </div>
+  </div>
+
+  <div id="validador">
+    <label class="acc-label">Ingresa tu código de descuento</label>
+    <input id="acc-input" type="text" placeholder="Ej. ABC123"
+      oninput="this.value=this.value.toUpperCase()"
+      onkeydown="if(event.key==='Enter')accValidar()" />
+    <button id="acc-btn" onclick="accValidar()">Validar y acceder</button>
+    <div id="acc-msg"></div>
+  </div>
 </div>
 
 <script>
@@ -102,7 +151,6 @@ function accValidar() {
   var val = document.getElementById("acc-input").value.trim().toUpperCase();
   var msg = document.getElementById("acc-msg");
   var btn = document.getElementById("acc-btn");
-
   if (!val) {
     msg.style.display = "block"; msg.style.background = "#fef2f2"; msg.style.color = "#991b1b";
     msg.innerHTML = "Por favor ingresa un código.";
@@ -119,12 +167,10 @@ function accValidar() {
     msg.innerHTML = "Este código ya agotó sus usos.";
     return;
   }
-
   accCodigos[val].usados++;
   btn.disabled = true;
   msg.style.display = "block"; msg.style.background = "#f0fdf4"; msg.style.color = "#166534";
   msg.innerHTML = "Código válido. Redirigiendo...";
-
   setTimeout(function () {
     window.open(d.url, "_blank");
     btn.disabled = false;
