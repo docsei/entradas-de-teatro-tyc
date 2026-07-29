@@ -168,7 +168,7 @@ function accValidar() {
   msg.style.display = "block"; msg.style.background = "#f0fdf4"; msg.style.color = "#166534";
   msg.innerHTML = "Código válido. Redirigiendo...";
   setTimeout(function () {
-    window.open(d.url, "_blank");
+    window.top.location.href = d.url;
     btn.disabled = false;
   }, 1200);
 }
