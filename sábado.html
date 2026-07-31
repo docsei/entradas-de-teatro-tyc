@@ -1,0 +1,43 @@
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  .prog-wrap { font-family:'DM Mono', monospace; width:100%; max-width:100%; margin:0 auto; padding:1.5rem 4%; box-sizing:border-box; }
+  .prog-wrap * { box-sizing:border-box; }
+  .prog-title { text-align:center; margin-bottom:4px; }
+  .prog-title span { color:#d5ed3d; font-weight:900; font-size:clamp(28px,5vw,40px); letter-spacing:1px; font-family:'Archivo Black', sans-serif; }
+  .prog-subtitle { text-align:center; margin-bottom:22px; }
+  .prog-subtitle span { color:#d5ed3d; font-size:clamp(11px,1.6vw,14px); letter-spacing:1px; }
+  .prog-tabs input[type="radio"] { display:none; }
+  .prog-tab-labels { display:flex; width:100%; gap:12px; margin-bottom:16px; }
+  .prog-tab-labels label {
+    flex:1; min-width:0; text-align:center; cursor:pointer;
+    padding:clamp(9px,1.4vw,13px) 6px; border-radius:999px;
+    font-family:'DM Mono', monospace; font-size:clamp(10px,1.6vw,14px);
+    letter-spacing:0.5px; font-weight:700;
+    background:transparent; color:#f8a7c9; border:1.5px solid #f8a7c9;
+  }
+  #prog-viernes:checked ~ .prog-tab-labels label[for="prog-viernes"],
+  #prog-sabado:checked ~ .prog-tab-labels label[for="prog-sabado"] {
+    background:#f8a7c9; color:#4b1528;
+  }
+  .prog-frame { display:none; width:100%; border:none; }
+  #prog-viernes:checked ~ .prog-frames .frame-viernes { display:block; }
+  #prog-sabado:checked ~ .prog-frames .frame-sabado { display:block; }
+</style>
+
+<div class="prog-wrap">
+  <div class="prog-title"><span>PROGRAMACIÓN</span></div>
+  <div class="prog-subtitle"><span>LO QUE VIVIRÁS ESTOS DOS DÍAS</span></div>
+
+  <div class="prog-tabs">
+    <input type="radio" name="prog-day" id="prog-viernes" checked>
+    <input type="radio" name="prog-day" id="prog-sabado">
+    <div class="prog-tab-labels">
+      <label for="prog-viernes">VIERNES 11 DE SEPTIEMBRE</label>
+      <label for="prog-sabado">SÁBADO 12 DE SEPTIEMBRE</label>
+    </div>
+    <div class="prog-frames">
+      <iframe class="prog-frame frame-viernes" src="https://docsei.github.io/entradas-de-teatro-tyc/viernes.html" style="height:260px;"></iframe>
+      <iframe class="prog-frame frame-sabado" src="https://docsei.github.io/entradas-de-teatro-tyc/sabado.html" style="height:460px;"></iframe>
+    </div>
+  </div>
+</div>
