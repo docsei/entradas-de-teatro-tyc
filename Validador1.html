@@ -3,43 +3,27 @@
   html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
   }
-  #pagina {
+  .card-wrap {
+    max-width: 560px;
     width: 100%;
+    margin: 40px auto;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid #e5e7eb;
   }
-  #banner {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  #banner-inner {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  #banner-inner img {
+  .card-wrap * { box-sizing: border-box; }
+  .card-img {
     display: block;
     width: 100%;
     height: auto;
   }
   #validador {
-    font-family: 'Poppins', sans-serif;
-    max-width: 440px;
+    background: #fff;
     width: 100%;
-    margin: 0 auto;
     padding: clamp(20px, 4vw, 32px);
-    box-sizing: border-box;
   }
   #validador .acc-label {
     display: block;
@@ -116,12 +100,8 @@
     line-height: 1.4;
   }
 </style>
-<div id="pagina">
-  <div id="banner">
-    <div id="banner-inner">
-      <img id="banner-img" src="" alt="Logo">
-    </div>
-  </div>
+<div class="card-wrap">
+  <img class="card-img" id="banner-img" src="" alt="Logo">
   <div id="validador">
     <label class="acc-label">Ingresa tu código de descuento</label>
     <input id="acc-input" type="text" placeholder="Ej. ABC123"
