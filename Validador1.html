@@ -135,7 +135,6 @@
 <script>
 var params = new URLSearchParams(window.location.search);
 var grupo = params.get('evento') || 'default';
-
 var presets = {
   "planchando": {
     imagen: "https://cdn.getcrowder.com/images/e2e25186-4f2a-47ba-95dd-48d30123401a-banner.jpg",
@@ -152,8 +151,8 @@ var presets = {
   "bailar": {
     imagen: "https://cdn.getcrowder.com/images/2eb8fcfc-9d6d-4905-af40-02a53dbab144-banner.jpg",
     codigos: {
-      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falt-bailar-multivacaciones" }
-      "NOSFALTOBAILAR30":{usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falto-bailar-codigos" }
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falt-bailar-multivacaciones" },
+      "NOSFALTOBAILAR30": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falto-bailar-codigos" }
     }
   },
   "brutas": {
@@ -171,9 +170,10 @@ var presets = {
   "miedo": {
     imagen: "https://cdn.getcrowder.com/images/0b6369ac-858f-4ca9-a81a-b1e3c014175c-banner.jpg",
     codigos: {
-      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-multivacaciones" }
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-multivacaciones" },
       "RAFAINVITA": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-4x3" }
     }
+  },
   "mago": {
     imagen: "https://cdn.getcrowder.com/images/6c9655f9-c088-46b3-b66f-99d5cc93dc7f-banner-15.jpg",
     codigos: {
@@ -181,11 +181,9 @@ var presets = {
     }
   }
 };
-
 var grupoActual = presets[grupo] || { imagen: "", codigos: {} };
 var accCodigos = grupoActual.codigos;
 document.getElementById("banner-img").src = grupoActual.imagen;
-
 function accValidar() {
   var val = document.getElementById("acc-input").value.trim().toUpperCase();
   var msg = document.getElementById("acc-msg");
