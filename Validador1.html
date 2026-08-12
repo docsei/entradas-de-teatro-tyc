@@ -1,18 +1,15 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
   html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
-
   #pagina {
     width: 100%;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
   }
-
   #banner {
     width: 100vw;
     position: relative;
@@ -37,7 +34,6 @@
     width: 100%;
     height: auto;
   }
-
   #validador {
     font-family: 'Poppins', sans-serif;
     max-width: 440px;
@@ -121,14 +117,12 @@
     line-height: 1.4;
   }
 </style>
-
 <div id="pagina">
   <div id="banner">
     <div id="banner-inner">
-      <img src="https://cdn.getcrowder.com/images/4144ecbd-650d-48d9-9672-48e47e3b67ca-diseo-sin-ttulo-45.png?w=300" alt="Logo">
+      <img id="banner-img" src="" alt="Logo">
     </div>
   </div>
-
   <div id="validador">
     <label class="acc-label">Ingresa tu código de descuento</label>
     <input id="acc-input" type="text" placeholder="Ej. ABC123"
@@ -138,33 +132,59 @@
     <div id="acc-msg"></div>
   </div>
 </div>
-
 <script>
 var params = new URLSearchParams(window.location.search);
 var grupo = params.get('evento') || 'default';
 
 var presets = {
   "planchando": {
-    "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/planchando-el-despecho-multivacaciones" }
+    imagen: "https://cdn.getcrowder.com/images/e2e25186-4f2a-47ba-95dd-48d30123401a-banner.jpg",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/planchando-el-despecho-multivacaciones" }
+    }
   },
   "criolla": {
-    "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/stand-up-comedy--cuenteria-multivacaciones" }
+    imagen: "https://cdn.getcrowder.com/images/cfff0c25-5dcb-4a0b-b45f-154469d2b25c-banner.jpg",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/stand-up-comedy--cuenteria-multivacaciones" }
+    }
   },
   "bailar": {
-    "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falt-bailar-multivacaciones" }
+    imagen: "https://cdn.getcrowder.com/images/2eb8fcfc-9d6d-4905-af40-02a53dbab144-banner.jpg",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falt-bailar-multivacaciones" }
+      "NOSFALTOBAILAR30":{usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falto-bailar-codigos" }
+    }
   },
   "brutas": {
-    "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/los-caballeros-las-prefieren-brutas-multivacaciones" }
+    imagen: "https://cdn.getcrowder.com/images/826486e7-1deb-444e-94e8-38bfed48d3b7-diseo-sin-ttulo-50.png",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/los-caballeros-las-prefieren-brutas-multivacaciones" }
+    }
   },
   "edad": {
-    "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/estado-de-grave-e-edad-multivacaciones" }
+    imagen: "https://cdn.getcrowder.com/images/77272177-c842-4656-b903-00423dee7602-banner.jpg",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/estado-de-grave-e-edad-multivacaciones" }
+    }
   },
   "miedo": {
-    "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-multivacaciones" }
+    imagen: "https://cdn.getcrowder.com/images/0b6369ac-858f-4ca9-a81a-b1e3c014175c-banner.jpg",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-multivacaciones" }
+      "RAFAINVITA": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-4x3" }
+    }
+  "mago": {
+    imagen: "https://cdn.getcrowder.com/images/6c9655f9-c088-46b3-b66f-99d5cc93dc7f-banner-15.jpg",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/mago-de-oz-el-musical-multivacaciones" }
+    }
   }
 };
 
-var accCodigos = presets[grupo] || {};
+var grupoActual = presets[grupo] || { imagen: "", codigos: {} };
+var accCodigos = grupoActual.codigos;
+document.getElementById("banner-img").src = grupoActual.imagen;
 
 function accValidar() {
   var val = document.getElementById("acc-input").value.trim().toUpperCase();
