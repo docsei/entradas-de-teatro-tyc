@@ -115,32 +115,10 @@
 var params = new URLSearchParams(window.location.search);
 var grupo = params.get('evento') || 'default';
 var presets = {
-  "planchando": {
-    imagen: "https://cdn.getcrowder.com/images/e2e25186-4f2a-47ba-95dd-48d30123401a-banner.jpg",
-    codigos: {
-      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/planchando-el-despecho-multivacaciones" }
-    }
-  },
   "criolla": {
     imagen: "https://cdn.getcrowder.com/images/cfff0c25-5dcb-4a0b-b45f-154469d2b25c-banner.jpg",
     codigos: {
       "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/stand-up-comedy--cuenteria-multivacaciones" }
-    }
-  },
-  "bailar": {
-    imagen: "https://cdn.getcrowder.com/images/1c2e7d52-ca89-43c8-95ce-15d68883c144-copia-de-banner.jpg",
-    codigos: {
-      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falt-bailar--miguel-gane-multivacaciones" },
-      "NOSFALTOBAILAR30": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/nos-falt-bailar--miguel-gane-codigos" },
-      "NOSFALTOBAILAR2":{usos: 999, usados:0, url: "https://www.entradasdeteatro.co/event/nos-falt-bailar--miguel-gane-2x1"}
-    }
-  },
-  "brutas": {
-    imagen: "https://cdn.getcrowder.com/images/826486e7-1deb-444e-94e8-38bfed48d3b7-diseo-sin-ttulo-50.png",
-    codigos: {
-      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/los-caballeros-las-prefieren-brutas-multivacaciones" },
-      "EDT15": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/los-caballeros-las-prefieren-brutas15" },
-      "NEXT2X1":{ usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/los-caballeros-las-prefieren-brutas-2x1"}
     }
   },
   "edad": {
@@ -149,27 +127,10 @@ var presets = {
       "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/estado-de-grave-e-edad-multivacaciones" }
     }
   },
-  "miedo": {
-    imagen: "https://cdn.getcrowder.com/images/0b6369ac-858f-4ca9-a81a-b1e3c014175c-banner.jpg",
-    codigos: {
-      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-multivacaciones" },
-      "RAFAINVITA": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/en-el-nombre-del-miedo--temporada-en-bogota-4x3" }
-    }
-  },
   "mago": {
     imagen: "https://cdn.getcrowder.com/images/6c9655f9-c088-46b3-b66f-99d5cc93dc7f-banner-15.jpg",
     codigos: {
       "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/mago-de-oz-el-musical-multivacaciones" }
-    }
-  },
-  "podes": {
-    imagen: "https://cdn.getcrowder.com/images/615cd342-74d4-4a24-894f-d8620d2746e1-banner-4.png",
-    codigos: {
-      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/vos-podes-fest-multivacaciones" },
-      "WHAP30": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/vos-podes-fest-30" },
-      "VOSPODESSELIA": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/vos-podes-fest-selia" },
-      "VOSPODESNAFNAF": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/vos-podes-fest-naf-naf" },
-      "VOSPODESFEST20": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/vos-podes-20" }
     }
   },
   "magica": {
@@ -180,6 +141,12 @@ var presets = {
     }
   },
   "viejotk": {
+    imagen: "https://cdn.getcrowder.com/images/09bd2342-e3fb-4b4f-a855-3c9514109f6a-banner.jpg",
+    codigos: {
+      "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/la-gran-viejotk-tropical-multivacaciones" },
+    }
+  },
+  "selena": {
     imagen: "https://cdn.getcrowder.com/images/09bd2342-e3fb-4b4f-a855-3c9514109f6a-banner.jpg",
     codigos: {
       "ASTORCONMULTI": { usos: 999, usados: 0, url: "https://www.entradasdeteatro.co/event/la-gran-viejotk-tropical-multivacaciones" },
